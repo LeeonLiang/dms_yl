@@ -1,5 +1,6 @@
 <?php
 namespace app\index\controller;
+use think\Db;
 
 class Index
 {
@@ -15,6 +16,7 @@ class Index
 
     public function test()
     {
-        Db::query('select * from think_user where user_id=?',[0]);
+        $arrRes = Db::query('select * from think_user where user_id=?',[0]);
+        return json_encode($arrRes);
     }
 }
