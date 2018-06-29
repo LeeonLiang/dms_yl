@@ -2,6 +2,7 @@
 namespace app\demo\controller;
 
 use think\Controller;
+use think\Db;
 use think\Request;
 
 class Test extends Controller
@@ -37,8 +38,16 @@ class Test extends Controller
         return json($objModelTest);
     }
 
+    /**
+     * 测试查询构造器
+     * @return \think\response\Json
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function testDbSelectAll()
     {
-       
+        $res = \app\demo\model\Test::where('id', '>', 0)->where('id', '=', 2)->select();
+        return json($res);
     }
 }
