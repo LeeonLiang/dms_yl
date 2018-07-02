@@ -3,6 +3,7 @@ namespace app\demo\controller;
 
 use think\Controller;
 use think\Db;
+use think\Log;
 use think\Request;
 
 class Test extends Controller
@@ -34,6 +35,7 @@ class Test extends Controller
      */
     public function testDbSelectOne()
     {
+        Log::info('test info');
         $objModelTest = \app\demo\model\Test::get(1);
         return json($objModelTest);
     }
